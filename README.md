@@ -44,7 +44,7 @@ a protein language model-based framework for mining privileged scaffolds in synt
 
 # Usage
 ### For synthetic binding protein scaffolds mining from massive sequences, users can just change the data in `0storage/2selected_gomc/selected_gomc_1000_predicted_results.csv`  
-### The SRR ID & Gene ID can be just considered as a special identifier for you to distinguish different sequences
+### The SRR ID & Gene ID can be just considered as a special identifier for you to distinguish different sequences, it's feasible to fill it with what you want
 ### The final output is in `0storage/6selected_gomc`  
 
 # Note
