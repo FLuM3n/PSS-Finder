@@ -4,7 +4,7 @@ a protein language model-based framework for mining privileged scaffolds in synt
 -
 ![Workflow of PSS-Finder](PSS-Finder.png)
 
-#Introduction
+#Introduction  
 PSS-Finder is a framework designed to predict whether novel protein sequences belong to 53 categories of synthetic binding protein scaffolds. The framework provides pre-trained weights, enabling users to directly load them for prediction. It also supports model training from scratch by modifying the training dataset.
 
 #Function
