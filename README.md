@@ -13,7 +13,7 @@ After classification, the framework automatically invokes ESMFold for rapid stru
 
 # contents
 ├── 0data_save  
-│   ├── dataset.csv (trainning dataset)  
+│   ├── dataset.csv   
 │   ├── model_weight  
 │   └── test.csv  
 ├── 0storage  
