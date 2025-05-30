@@ -49,8 +49,8 @@ the final output is in `0storage/6selected_gomc`
 # Note
 the data provided in this repository is limited
 the complete data links to:  
-The ocean microbial protein sequences are from https://db.cngb.org/maya/datasets/MDB0000002
-the pre-trained protBERT is available at https://huggingface.co/Rostlab/prot_bert
-The complete SBP and PSS related data can be downloaded at https://synbip.idrblab.net/
-The ESMFold used in this study is integrated into the code in the form of an API. For more stable usage, it can be downloaded from https://github.com/facebookresearch/esm for local deployment.  
+The ocean microbial protein sequences are from https://db.cngb.org/maya/datasets/MDB0000002  
+the pre-trained protBERT is available at https://huggingface.co/Rostlab/prot_bert  
+The complete SBP and PSS related data can be downloaded at https://synbip.idrblab.net/  
+The ESMFold used in this study is integrated into the code in the form of an API. For more stable usage, it can be downloaded from https://github.com/facebookresearch/esm for local deployment.    
 
