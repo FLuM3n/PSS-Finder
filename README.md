@@ -13,11 +13,11 @@ The framework utilizes the pre-trained protein language model (PLM) protBERT to 
 After classification, the framework automatically invokes ESMFold for rapid structure prediction. The predicted structures are aligned against known synthetic protein scaffolds, and sequences with a TM-Score ≥ 0.5 are recorded as potential synthetic binding protein scaffolds, followed by comprehensive annotation output.
 
 # contents
-├── 0data_save 
-│ ├── dataset.csv (training dataset) 
-│ ├── model_weight 
-│ └── test.csv 
-├── 0storage 
+├── 0data_save  
+│ ├── dataset.csv  
+│ ├── model_weight  
+│ └── test.csv  
+├── 0storage  
 │ ├── 1select_gomc
 │ ├── 2selected_gomc
 │ ├── 3selected_gomc_type_csv
