@@ -40,3 +40,7 @@ After classification, the framework automatically invokes ESMFold for rapid stru
 4prediction/  
 ├── align.py  
 └── model_predict.py  
+
+# Usage
+for synthetic binding protein scaffolds mining from massive sequences, users can just change the data in `0storage/2selected_gomc/selected_gomc_1000_predicted_results.csv`  
+the SRR ID & Gene ID can be just considered as a special identifier for you to distinguish different sequences
