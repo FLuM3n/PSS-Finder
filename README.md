@@ -10,6 +10,7 @@ PSS-Finder is a framework designed to predict whether novel protein sequences be
 
 # Function  
 The framework utilizes the pre-trained protein language model (PLM) protBERT to process protein sequences, generating two types of embeddings as input features for the neural network. The classification model computes probability scores for each scaffold category and assigns the sequence to the class with the highest probability.  
+  
 After classification, the framework automatically invokes ESMFold for rapid structure prediction. The predicted structures are aligned against known synthetic protein scaffolds, and sequences with a TM-Score ≥ 0.5 are recorded as potential synthetic binding protein scaffolds, followed by comprehensive annotation output.
 
 # Contents
@@ -42,9 +43,9 @@ After classification, the framework automatically invokes ESMFold for rapid stru
 └── model_predict.py  
 
 # Usage
-for synthetic binding protein scaffolds mining from massive sequences, users can just change the data in `0storage/2selected_gomc/selected_gomc_1000_predicted_results.csv`  
-the SRR ID & Gene ID can be just considered as a special identifier for you to distinguish different sequences
-the final output is in `0storage/6selected_gomc`  
+For synthetic binding protein scaffolds mining from massive sequences, users can just change the data in `0storage/2selected_gomc/selected_gomc_1000_predicted_results.csv`  
+The SRR ID & Gene ID can be just considered as a special identifier for you to distinguish different sequences
+The final output is in `0storage/6selected_gomc`  
 
 # Note
 the data provided in this repository is limited
