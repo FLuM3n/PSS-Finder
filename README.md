@@ -13,24 +13,24 @@ After classification, the framework automatically invokes ESMFold for rapid stru
 
 # contents
 ├── 0data_save  
-│   ├── dataset.csv   
-│   ├── model_weight  
-│   └── test.csv  
+---dataset.csv   
+---model_weight  
+---test.csv  
 ├── 0storage  
-│   ├── 1select_gomc  
-│   ├── 2selected_gomc  
-│   ├── 3selected_gomc_type_csv  
-│   ├── 4selected_gomc_type_pdb  
-│   ├── 5reference_sbp  
-│   ├── 6selected_gomc_tm-score  
+---1select_gomc  
+---2selected_gomc  
+---3selected_gomc_type_csv  
+---4selected_gomc_type_pdb  
+---5reference_sbp  
+---6selected_gomc_tm-score  
 ├── 1protBERT  
 ├── 2model_train  
-│   ├── continue_train.py  
-│   ├── embedding.py  
-│   ├── model.py  
-│   ├── normal_train.py  
-│   └── test.py  
+---continue_train.py  
+---embedding.py  
+---model.py  
+---normal_train.py  
+---test.py  
 ├── 3ESMFold  
 └── 4prediction  
-    ├── align.py  
-    └── model_predict.py  
+--- align.py  
+--- model_predict.py  
