@@ -20,54 +20,37 @@ class ProteinEmbeddingGenerator:
         """
         if ' ' not in sequence:
             sequence = ' '.join(list(sequence))
-        sequence = re.sub(r"[UZOB]", "X", sequence)  # 替换无法识别的氨基酸
+        sequence = re.sub(r"[UZOB]", "X", sequence)
         return sequence
 
     def embedding(self, sequences):
-        """
-        为输入的蛋白质序列生成嵌入。
-        :param sequences: 包含蛋白质序列的列表。
-        :return:
-            - global_embeddings: 形状为 (batch_size, dim) 的全局嵌入（[CLS]）。
-            - local_embeddings: 形状为 (batch_size, length, dim) 的局部嵌入（[AA]，不包含 [SEP]）。
-            - mask: 形状为 (batch_size, length) 的掩码，1 表示有效 token，0 表示填充 token。
-        """
-        # 预处理所有序列
         processed_sequences = [self.preprocess_sequence(seq) for seq in sequences]
 
-        # 编码蛋白质序列
         encoded_input = self.tokenizer(
             processed_sequences,
             return_tensors='pt',
-            padding=True,  # 自动填充到最大长度
-            truncation=False  # 不截断
+            padding=True,  
+            truncation=False  
         ).to(self.device)
 
-        # 使用模型生成嵌入
         with torch.no_grad():
             outputs = self.model(**encoded_input)
 
-        # 获取最后一个隐藏层的状态
-        full_embeddings = outputs.last_hidden_state.detach().cpu()  # 形状为 (batch_size, max_length, dim)
+        full_embeddings = outputs.last_hidden_state.detach().cpu()  
 
-        # 提取全局嵌入（[CLS] token）
-        global_embeddings = full_embeddings[:, 0, :]  # 形状为 (batch_size, dim)
+        global_embeddings = full_embeddings[:, 0, :]  
 
-        # 提取局部嵌入（[AA] tokens），去掉 [CLS] 和 [SEP]
-        sep_token_id = self.tokenizer.sep_token_id  # 获取 [SEP] 的 token ID
-        input_ids = encoded_input['input_ids'].cpu()  # 获取 input_ids
+        sep_token_id = self.tokenizer.sep_token_id  
+        input_ids = encoded_input['input_ids'].cpu()  
 
-        # 找到 [SEP] 的位置
         sep_positions = (input_ids == sep_token_id).nonzero(as_tuple=True)[1]
 
-        # 提取局部嵌入，去掉 [SEP]
         local_embeddings = []
         local_mask = []
         for i in range(full_embeddings.shape[0]):
-            # 从第 1 个位置到 [SEP] 的前一个位置
             local_embeddings.append(full_embeddings[i, 1:sep_positions[i], :])
             local_mask.append(input_ids[i, 1:sep_positions[i]] != self.tokenizer.pad_token_id)
-        local_embeddings = torch.nn.utils.rnn.pad_sequence(local_embeddings, batch_first=True)  # 填充到相同长度
-        local_mask = torch.nn.utils.rnn.pad_sequence(local_mask, batch_first=True)  # 填充到相同长度
+        local_embeddings = torch.nn.utils.rnn.pad_sequence(local_embeddings, batch_first=True)  
+        local_mask = torch.nn.utils.rnn.pad_sequence(local_mask, batch_first=True)  
 
         return global_embeddings, local_embeddings, local_mask
