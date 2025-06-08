@@ -73,7 +73,6 @@ class Trainer:
             mask = mask.to(self.device)
             labels = labels.long().to(self.device)
 
-            # 使用混合精度
             with torch.cuda.amp.autocast():
                 outputs = self.model(global_emb, local_emb, mask)
                 loss = self.criterion(outputs, labels)
@@ -103,7 +102,6 @@ class Trainer:
                 mask = mask.to(self.device)
                 labels = labels.long().to(self.device)
 
-                # 使用混合精度
                 with torch.cuda.amp.autocast():
                     outputs = self.model(global_emb, local_emb, mask)
                     loss = self.criterion(outputs, labels)
