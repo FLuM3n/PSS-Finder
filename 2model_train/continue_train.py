@@ -280,5 +280,5 @@ if __name__ == "__main__":
         csv_path='../0data_save/dataset.csv',
         epochs=2,
         batch_size=48,
-        start_epoch=1  # 从第14轮开始训练
+        start_epoch=1  # start with certain epoch
     )
